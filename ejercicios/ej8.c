@@ -10,15 +10,17 @@ int main () {
     printf("Cuanto dinero desea retirar? \n");
     scanf("%f", &retiro);
 
-    if (saldoInicial < retiro) {
-        printf("No tiene suficiente monto \n");
-    } else {
+    if (saldoInicial > retiro) {
+
         if (saldoInicial >= retiro ) {
             extraccion = saldoInicial - retiro;
 
-            printf("Su extraccion es de: %f \n", retiro);
-            printf("Su saldo actual es: %f \n", extraccion);
+            printf("Su extraccion es de: %.2f \n", retiro);
+            printf("Su saldo actual es: %.2f \n", extraccion);
         }
+
+    } else {
+        printf("No tiene suficiente monto \n");
     }
     
     system ("pause");

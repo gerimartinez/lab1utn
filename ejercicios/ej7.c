@@ -4,32 +4,32 @@
 
 int main () {
 
-    float venta, descuento, valorFinal;
+    float venta, descuento, totalVenta;
 
     
     printf("Ingrese el valor de la venta \n");
     scanf("%f", &venta);
     
-    if (venta <= 0) {
-        printf("La venta debe ser mayor a 0. Intente de nuevo \n");
-    } else {
+    if (venta > 0) {
 
         if (venta >= 100000) {
 
-            descuento = venta * 0,15;
+            descuento = venta * 0.15;
         } 
         else {
         
-            descuento = venta * 0,10;
+            descuento = venta * 0.10;
         }
 
-        valorFinal = (venta - descuento);
-
+        totalVenta = venta - descuento;
         printf("Descuento aplicado: %.2f \n", descuento);
-        printf("Valor final con descuento: %.2f \n", valorFinal);
-    }
+        printf("Valor final con descuento: %.2f \n", totalVenta);
+    } else {
+        printf("El valor de la venta debe ser mayor que 0");
+    }    
 
-   
+   system("pause");
+   return 0;
 }
  
 //Ingresar el valor de una venta y aplicar el 15% de descuento si el valor es >= 100.000 y 

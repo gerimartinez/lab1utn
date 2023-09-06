@@ -2,32 +2,26 @@
 #include <stdlib.h>
 #include <math.h>
 
-int main () {
-    int nota, condicion;
-
-    nota <= 10;
+void main () {
+    float nota;
 
     printf("Ingrese la nota del examen \n");
-    scanf("%d", &nota);
+    scanf("%f", &nota);
 
-    if (nota < 0 && nota > 10) {
-        printf("Nota invalida \n");
+    if (nota >= 0 && nota <= 10) {
+        if (nota >= 6) {
+            printf("Promocionado");
+        } else if (nota >= 4) {
+            printf("Regular");
+        } else {
+            printf("No aprobado");
+        }
+   
     } else {
-
-        if (nota >= 4 && nota < 6) {
-            printf("Su condicion es: regular \n");
-        }
-
-        else if (nota >= 0 && nota < 4) {
-            printf("Su condicion es: reprobado \n");
-        }
+        printf("Nota invalida");
+    }
     
-        else {
-            printf("Su condicion es: promocionado \n");    
-        }
-} 
     system("pause");
-    return 0;
 }
 
 // Leer una nota de un alumno por consola e informar la condición del mismo. (menor 
