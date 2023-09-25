@@ -3,7 +3,8 @@
 #include <math.h>
 
 void main () {
-    int num1, num2
+    
+    int num1, num2;
 
     printf("Ingresa el primer numero: \n");
     scanf("%d", &num1);
