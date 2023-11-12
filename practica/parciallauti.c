@@ -1,6 +1,93 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include <stdio.h>
+
+#define MAX_OPERACIONES 20
+#define MONTO_MAXIMO 20000
+#define SALDO_INICIAL 100000
+
+struct Movimiento {
+    int numero;
+    int importe;
+};
+
+int main() {
+    int saldo = SALDO_INICIAL;
+    int operacionesRealizadas = 0;
+    struct Movimiento movimientos[MAX_OPERACIONES];
+
+    printf("Bienvenido al Cajero Virtual\n");
+
+    while (operacionesRealizadas < MAX_OPERACIONES) {
+        printf("\nOpciones disponibles:\n");
+        printf("1. Ingreso de Dinero\n");
+        printf("2. Extracción\n");
+        printf("3. Consulta de Saldo\n");
+        printf("4. Consulta de últimos movimientos\n");
+        printf("5. Salir\n");
+
+        int opcion;
+        printf("Ingrese el número de la opción deseada: ");
+        scanf("%d", &opcion);
+
+        switch (opcion) {
+            case 1:
+                printf("Ingrese el monto a ingresar (0 para cancelar): ");
+                int montoIngreso;
+                scanf("%d", &montoIngreso);
+                if (montoIngreso == 0 || montoIngreso > MONTO_MAXIMO) {
+                    printf("Operación cancelada.\n");
+                } else {
+                    saldo += montoIngreso;
+                    printf("Ingreso exitoso. Nuevo saldo: %d\n", saldo);
+                    movimientos[operacionesRealizadas].numero = operacionesRealizadas + 1;
+                    movimientos[operacionesRealizadas].importe = montoIngreso;
+                    operacionesRealizadas++;
+                }
+                break;
+
+            case 2:
+                printf("Ingrese el monto a extraer (0 para cancelar): ");
+                int montoExtraccion;
+                scanf("%d", &montoExtraccion);
+                if (montoExtraccion == 0 || montoExtraccion > MONTO_MAXIMO) {
+                    printf("Operación cancelada.\n");
+                } else {
+                    saldo -= montoExtraccion;
+                    printf("Extracción exitosa. Nuevo saldo: %d\n", saldo);
+                    movimientos[operacionesRealizadas].numero = operacionesRealizadas + 1;
+                    movimientos[operacionesRealizadas].importe = -montoExtraccion;
+                    operacionesRealizadas++;
+                }
+                break;
+
+            case 3:
+                printf("Consulta de Saldo: %d\n", saldo);
+                break;
+
+            case 4:
+                printf("Consulta de últimos movimientos:\n");
+                printf("Nro Mov    Importe\n");
+                for (int i = 0; i < operacionesRealizadas; i++) {
+                    printf("%5d %9d\n", movimientos[i].numero, movimientos[i].importe);
+                }
+                break;
+
+            case 5:
+                printf("Gracias por utilizar el Cajero Virtual. Hasta luego.\n");
+                return 0;
+
+            default:
+                printf("Opción no válida. Por favor, ingrese un número válido.\n");
+        }
+    }
+
+    printf("Ha alcanzado el límite de operaciones permitidas.\n");
+    printf("Gracias por utilizar el Cajero Virtual. Hasta luego.\n");
+
+    return 0;
+}
 void main()
 {
 //Hace poco tiempo atrás, TUP Bank S.A le encargó el desarrollo de un programa de “cajero virtual” para probar la usabilidad de los mismos. 
